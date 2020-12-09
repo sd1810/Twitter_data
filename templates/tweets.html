@@ -1,0 +1,12 @@
+{% extends 'layout.html' %}
+{% block content %}
+    <div class="d-grid gap-4 col-6 mx-auto">
+      <h1>Tweets Page!</h1>
+      {% for url in urls %}
+        <blockquote class="twitter-tweet">
+          <a href={{ url }}></a>
+        </blockquote>
+      {% endfor %}
+    </div>
+    <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+{% endblock content %}
