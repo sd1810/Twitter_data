@@ -1,35 +1,16 @@
 # README
 
+## `Introduction`
+This project scrapes the twitter mentions of the twitter handle provided by the user and displays the tweets.
+
+
 ## `Requirements`
 
 To run this project you will need following setup:
 
-[Ubuntu 20.04 LTS](https://ubuntu.com/#download)</br>
-[Python version 3.8.5](https://www.python.org/downloads/)</br>
+[Python version above 3](https://www.python.org/downloads/)</br>
 [Flask](https://flask.palletsprojects.com/en/1.1.x/installation/)</br>
 [Selenium](https://pypi.org/project/selenium/)</br>
-
-## `Installation`
-
-### **_Python_**
-
-To install python run following commands on your terminal.
-
-1. $ sudo apt-get install software-properties-common</br>
-2. $ sudo add-apt-repository ppa:deadsnakes/ppa</br>
-3. $ sudo apt-get update</br>
-4. $ sudo apt-get install python3.8</br>
-
-### **_Flask_**
-
-$ pip install flask</br>
-OR</br>
-$ pip3 install flask</br>
-
-### **_Selenium_**
-$ pip install selenium</br>
-OR</br>
-$ pip3 install selenium</br>
 
 ## `Run the project`
 
