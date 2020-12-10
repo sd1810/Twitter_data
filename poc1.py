@@ -13,14 +13,16 @@ option.add_argument('--headless')
 driver = webdriver.Chrome(options=option)
 
 
-# To get all the tweets
-# Input : Company name for which we want the tweets
-# Scrolls the page and get all the tweets
-# Returns List of urls of the tweets
-def get_data(input_company):
 
+def get_data(input_company):
+	'''
+	To get all the tweets
+ 	Input : Company name for which we want the tweets
+	Scrolls the page and get all the tweets
+	Returns List of urls of the tweets
+	'''
 	# Redirect to company page
-	url = "https://twitter.com/" + input_company
+	url = "https://twitter.com/search?q=%40" + input_company + "&src=recent_search_click"
 	driver.get(url)
 
 
@@ -41,21 +43,22 @@ def get_data(input_company):
 		sleep(random.randint(1,3))
 		scroll_height = driver.execute_script("return document.body.scrollHeight")
 
-		if (screen_height) * no_of_scroll > scroll_height or len(tweet_urls) == 15:
-			scrolling = False
+		if (screen_height) * no_of_scroll > scroll_height or len(tweet_urls) >= 15:
 			break
 
 	print(tweet_urls)
 	print(len(tweet_urls))
 	return tweet_urls
 
-
-# Function to fetch all the urls and append it in tweet_urls
-# Input : tweet_urls is the final list of tweets which get_data function will return and tweet_ids is set to avoid duplicate entries of tweet
-# Appends the urls in tweet_urls and return to the calling function
+#
 def get_tweet_links(tweet_urls,tweet_ids):
+	'''
+	Function to fetch all the urls and append it in tweet_urls
+	Input : tweet_urls is the final list of tweets which get_data function will return and tweet_ids is set to avoid duplicate entries of tweet
+	Appends the urls in tweet_urls and return to the calling function
+	'''
 	try:
-		tweet_cards=driver.find_elements_by_xpath('/html/body/div[1]/div/div/div[2]/main/div/div/div/div[1]/div/div[2]/div/div/div[2]/section/div/div/div')
+		tweet_cards=driver.find_elements_by_xpath('/html/body/div[1]/div/div/div[2]/main/div/div/div/div[1]/div/div[2]/div/div/section/div/div/div')
 		for card in tweet_cards:
 			try:
 				link = card.find_element_by_xpath('./div/div/article/div/div/div/div[2]/div[2]/div[1]/div/div/div[1]/a').get_attribute('href')
@@ -68,5 +71,3 @@ def get_tweet_links(tweet_urls,tweet_ids):
 				print("Link not found!!")
 	except:
 		print("Tweet Card not found!!")
-
-	return tweet_urls
